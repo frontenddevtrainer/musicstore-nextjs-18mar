@@ -1,9 +1,7 @@
-import { CartContext } from "@/app/context/cart";
-import { useContext } from "react";
+import useCart from "@/app/hooks/useCart";
 
 const AddToCart = () => {
-
-    const { addToCart } = useContext(CartContext)
+    const { addToCart } = useCart()
     return <button onClick={() => { addToCart({ name: Math.random() }) }}>Add to Cart</button>
 }
 

@@ -6,6 +6,8 @@ const CartContext = createContext<{ items: any[], addToCart(item: any): void }>(
 
 const { Provider } = CartContext
 
+CartContext.displayName = "CartContext"
+
 
 const CartProvider = ({ children }: { children: any }) => {
     const [items, setItems] = useState<any[]>([]);

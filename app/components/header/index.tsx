@@ -1,11 +1,10 @@
 "use client"
 
-import { CartContext } from "@/app/context/cart";
-import { useContext } from "react"
+import useCart from "@/app/hooks/useCart";
 
-const Header = ()=>{
+const Header = () => {
 
-    const { items } = useContext(CartContext)
+    const { items } = useCart()
 
     return <header>
         Music Store
