@@ -1,8 +1,8 @@
 import useCart from "@/app/hooks/useCart";
 
-const AddToCart = () => {
+const AddToCart = ({ item }: { item: any }) => {
     const { addToCart } = useCart()
-    return <button onClick={() => { addToCart({ name: Math.random() }) }}>Add to Cart</button>
+    return <button onClick={() => { addToCart(item) }}>Add to Cart</button>
 }
 
 export default AddToCart;
