@@ -1,9 +1,10 @@
 import useAlbums from "@/app/hooks/useAlbums";
 import AddToCart from "../add-to-cart";
+import { useAlbumsContext } from "@/app/context/albums";
 
 const AlbumListing = () => {
 
-    const { albums } = useAlbums();
+    const { albums } = useAlbumsContext()
 
     return <ul>
         {
