@@ -1,6 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
-import CartReducer from "./slices/cart"
+import CartReducer, { CartState } from "./slices/cart"
+
+export interface AppState {
+    cart: CartState
+}
 
 export const makeStore = () => {
     return configureStore({
