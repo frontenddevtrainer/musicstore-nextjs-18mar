@@ -18,6 +18,9 @@ const CartSlice = createSlice({
         removeFromCart() {
 
         }
+    },
+    extraReducers : function(builder){
+
     }
 });
 
