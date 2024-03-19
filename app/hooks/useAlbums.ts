@@ -8,7 +8,13 @@ const useAlbums = () => {
         const getAlbums = async () => {
             setLoading(true);
             try {
-                const response = await fetch("https://jsonplaceholder.typicode.com/albums");
+                // https://jsonplaceholder.typicode.com/albums
+                const response = await fetch("http://localhost:3000/api/albums", {
+                    next: {
+                        tags: ["products", "offers", "sale", "432424324"]
+
+                    }
+                });
                 const albums = await response.json();
                 setAlbums(albums);
             } catch (error) {
