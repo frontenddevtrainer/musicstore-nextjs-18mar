@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link";
 import StoreProvider from "./StoreProvider";
 import AlbumListing from "./components/album-listing";
 import CartList from "./components/cart-list";
@@ -17,6 +18,7 @@ export default function Home() {
               <Header />
               <AlbumListing />
               <CartList />
+              <Link href={"/login"}>Login</Link>
             </main>
           </CartProvider>
         </AlbumsProvider>
