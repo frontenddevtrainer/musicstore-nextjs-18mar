@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { createWrapper } from "next-redux-wrapper";
 import CartReducer, { CartState } from "./slices/cart"
 import AlbumsReducer, { AlbumsState } from "./slices/albums"
 
@@ -16,5 +15,3 @@ export const makeStore = () => {
         }
     })
 }
-
-// export const wrapper = createWrapper(makeStore)
