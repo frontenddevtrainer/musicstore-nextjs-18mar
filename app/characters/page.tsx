@@ -1,6 +1,6 @@
 import Characters from "../components/characters";
 
-const OrderPage = () => {
+const CharactersPage = () => {
   return (
     <div>
       <Characters />
@@ -8,4 +8,4 @@ const OrderPage = () => {
   );
 };
 
-export default OrderPage;
+export default CharactersPage;

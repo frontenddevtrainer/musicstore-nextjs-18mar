@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import StoreProvider from "./StoreProvider";
 import AlbumListing from "./components/album-listing";
@@ -7,6 +7,7 @@ import Header from "./components/header";
 import { AlbumsProvider } from "./context/albums";
 import { CartProvider } from "./context/cart";
 import { ThemeProvider } from "./context/theme";
+import Characters from "./components/characters";
 
 export default function Home() {
   return (
