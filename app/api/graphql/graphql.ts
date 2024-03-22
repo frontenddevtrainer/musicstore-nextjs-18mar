@@ -1,7 +1,19 @@
+import { UserModel } from "@/app/db/models/users";
 import { ApolloServer } from "@apollo/server";
 import { gql } from "graphql-tag";
 
+import "@/app/db/db"
+
 const typeDefs = gql`
+  input CharacterIn {
+    name: String
+  }
+
+  input UserIn {
+    email: String,
+    password: String
+  }
+
   type Item {
     name: String
     price: Float
@@ -55,14 +67,33 @@ const typeDefs = gql`
     orders: [Order]
     order(id: String): Order
   }
+
+  type Mutation {
+    addCharacter(character: CharacterIn): String,
+    addUser(user: UserIn): String
+  }
 `;
 
 const resolvers = {
+  Mutation: {
+
+    async addUser(context, args) {
+        const { user } = args
+        const userObj = new UserModel(user);
+        await userObj.save();
+        return "user added"
+    },
+
+    addCharacter(context, args) {
+      console.log(context, args);
+      return "User added";
+    },
+  },
   Query: {
-    characters : async ()=>{
-        const response = await fetch("https://rickandmortyapi.com/api/character");
-        const json = await response.json();
-        return json;
+    characters: async () => {
+      const response = await fetch("https://rickandmortyapi.com/api/character");
+      const json = await response.json();
+      return json;
     },
     orders: () => {
       return [
