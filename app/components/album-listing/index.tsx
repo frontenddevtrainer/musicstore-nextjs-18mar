@@ -13,7 +13,7 @@ const AlbumListing = () => {
 
     useEffect(() => {
         dispatch(fetchAlbums() as any)
-    }, [])
+    }, [dispatch])
 
     const { items, loading } = useSelector((state: AppState) => {
         return state.albums

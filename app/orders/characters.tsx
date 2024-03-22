@@ -11,6 +11,7 @@ const Characters = ({ characters }: { characters: any[] }) => {
       {characters.map((character) => {
         return (
           <p
+            key={character.id}
             onClick={() => {
               setCounter((counter) => counter + 1);
             }}

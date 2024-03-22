@@ -1,25 +1,22 @@
-"use client"
+"use client";
 
 import { createContext, useState } from "react";
 
-const CartContext = createContext<{ items: any[], addToCart(item: any): void }>({ items: [] });
+const CartContext = createContext<{ items: any[]; addToCart(item: any): void }>(
+  { items: [], addToCart() {} }
+);
 
-const { Provider } = CartContext
+const { Provider } = CartContext;
 
-CartContext.displayName = "CartContext"
-
+CartContext.displayName = "CartContext";
 
 const CartProvider = ({ children }: { children: any }) => {
-    const [items, setItems] = useState<any[]>([]);
+  const [items, setItems] = useState<any[]>([]);
 
-    const addToCart = (item: any) => {
-        setItems([...items, item])
-    }
-    return <Provider value={{ items, addToCart }}>{children}</Provider>
+  const addToCart = (item: any) => {
+    setItems([...items, item]);
+  };
+  return <Provider value={{ items, addToCart }}>{children}</Provider>;
+};
 
-}
-
-export {
-    CartProvider,
-    CartContext
-}
+export { CartProvider, CartContext };

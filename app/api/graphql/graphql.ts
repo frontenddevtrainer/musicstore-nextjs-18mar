@@ -77,14 +77,14 @@ const typeDefs = gql`
 const resolvers = {
   Mutation: {
 
-    async addUser(context, args) {
+    async addUser(context:any, args:any) {
         const { user } = args
         const userObj = new UserModel(user);
         await userObj.save();
         return "user added"
     },
 
-    addCharacter(context, args) {
+    addCharacter(context:any, args:any) {
       console.log(context, args);
       return "User added";
     },
@@ -104,7 +104,7 @@ const resolvers = {
         },
       ];
     },
-    order: (context, args) => {
+    order: (context:any, args:any) => {
       console.log(args);
       return {
         id: "4234325435jlk423kl5",

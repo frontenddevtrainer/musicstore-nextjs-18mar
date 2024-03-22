@@ -4,7 +4,7 @@ const ThemeContext = createContext<any>({});
 
 const { Provider } = ThemeContext
 
-const ThemeProvider = ({ children }) => {
+const ThemeProvider = ({ children } : { children : React.ReactNode }) => {
 
     const [theme, setTheme] = useState("light");
 
