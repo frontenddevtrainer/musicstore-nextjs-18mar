@@ -15,6 +15,7 @@
     "@as-integrations/next": "^3.0.0",
     "@reduxjs/toolkit": "^2.2.1",
     "bcryptjs": "^2.4.3",
+    "formik": "^2.4.5",
     "graphql-tag": "^2.12.6",
     "jose": "^5.2.3",
     "mongoose": "^8.2.2",

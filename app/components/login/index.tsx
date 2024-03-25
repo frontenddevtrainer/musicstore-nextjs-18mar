@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { Formik } from "formik";
 
 const LoginForm = ({
   email = "",
@@ -8,87 +9,76 @@ const LoginForm = ({
   email: string;
   password: string;
 }) => {
-  //   const [emailValue, setEmailValue] = useState(email);
-  //   const [passwordValue, setPasswordValue] = useState(password);
-
-  const [formValue, setFormValue] = useState<{
-    username: string;
-    email: string;
-    password: string;
-    phoneno: string;
-  }>({ username: "", password: "", email: "", phoneno: "" });
-
-  const {
-    email: emailValue,
-    password: passwordValue,
-    username: usernameValue,
-    phoneno,
-  } = formValue;
-
-  const validateForm = (values: any) => {
-    const errors: any = {};
-
-    if (values["email"] === "") {
-      errors["email"] = "This is required";
-    }
-  };
-
-  const handleOnChange = (e) => {
-    const { name, value } = e.target;
-    setFormValue({ ...formValue, [name]: value });
-    validateForm({ ...formValue, [name]: value });
-  };
-
-  console.log(formValue);
-
-  const updateUserDetails = (e) => {
-    e.preventDefault();
+  const onSubmit = (values: any) => {
+    console.log(values);
   };
 
   return (
-    <form className="p-1" onSubmit={updateUserDetails}>
-      <p className="p-4">
-        <label htmlFor="name">Email</label>
-        <input
-          value={emailValue}
-          type="text"
-          name="email"
-          onChange={handleOnChange}
-        />
-        {emailValue === "" && <span>This is required</span>}
-      </p>
-      <p className="p-4">
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          value={passwordValue}
-          onChange={handleOnChange}
-        />
-      </p>
+    <Formik
+      initialValues={{ contact: { email: email, phoneno: "" }, password }}
+      onSubmit={onSubmit}
+    >
+      {({
+        values,
+        errors,
+        touched,
+        handleBlur,
+        handleChange,
+        handleSubmit,
+      }) => {
+        const {
+          contact: { email, phoneno },
+          password,
+        } = values;
 
-      <p className="p-4">
-        <label htmlFor="password">Username</label>
-        <input
-          type="password"
-          name="username"
-          value={usernameValue}
-          onChange={handleOnChange}
-        />
-      </p>
+        return (
+          <form className="p-1" onSubmit={handleSubmit}>
+            <p className="p-4">
+              <label htmlFor="email">Email</label>
+              <input
+                type="text"
+                name="contact.email"
+                value={email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </p>
+            <p className="p-4">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                value={password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </p>
 
-      <p className="p-4">
-        <label htmlFor="password">Username</label>
-        <input
-          type="password"
-          name="phoneno"
-          value={phoneno}
-          onChange={handleOnChange}
-        />
-      </p>
-      <button type="submit">Login</button>
-    </form>
+            <p className="p-4">
+              <label htmlFor="password">Username</label>
+              <input type="password" name="username" onChange={handleChange} />
+            </p>
+
+            <p className="p-4">
+              <label htmlFor="password">Phone no</label>
+              <input
+                value={phoneno}
+                type="password"
+                name="contact.phoneno"
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </p>
+            <button type="submit">Login</button>
+          </form>
+        );
+      }}
+    </Formik>
   );
 };
 
 export default LoginForm;
+
+{
+  /*  */
+}
