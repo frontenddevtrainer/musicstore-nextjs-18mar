@@ -1,0 +1,12 @@
+.form {
+    color : red
+}
+
+.loginForm {
+    composes: form;
+    font-style: italic;
+}
+
+.colorBlue {
+    color: blue;
+}
